@@ -14,6 +14,7 @@ class Usuario extends Model
             "id",
             "nome",
             "email",
+            "senha",
             "data_cadastro"
         ])->limit($limite)->get();
 
@@ -24,6 +25,7 @@ class Usuario extends Model
         $sql = self::insert([
             "nome" => $request->input('nome'),
             "email" => $request->input('email'),
+            "senha" => Hash::make($request->input('senha')),
             "data_cadastro" => DB::raw('NOW()'),
         ]);
 
