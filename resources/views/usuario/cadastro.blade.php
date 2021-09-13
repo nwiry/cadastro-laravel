@@ -15,6 +15,15 @@
                 {{ csrf_field() }}
                 <h2>@yield('titulo') <small>Complete os dados para continuar.</small></h2>
                 <hr class="colorgraph">
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Oops... Ocorreram os seguintes erros:</h4>
+                    @foreach($errors->all() as $error => $value)
+                    <p class="mb-0">• {{ $value }}
+                    </p>
+                    @endforeach
+                </div>
+                @endif
                 <div class="form-group">
                     <input type="text" class="form-control input-lg" placeholder="Nome" name="nome" id="nome"
                         tabindex="3">
@@ -33,10 +42,8 @@
                 </div>
                 <hr class="colorgraph">
                 <div class="row">
-                    <div class="col-xs-12 col-md-6"><input type="submit" value="Cadastrar"
+                    <div class="col-xs-12 col-md-12"><input type="submit" value="Cadastrar"
                             class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-                    <div class="col-xs-12 col-md-6"><a href="/login" class="btn btn-success btn-block btn-lg">Voltar ao Login</a>
-                    </div>
                 </div>
             </form>
         </div>
